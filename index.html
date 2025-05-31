@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Звездочёт</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1 data-i18n="title">AI Звездочёт</h1>
+        <img src="ai.jpg" alt="Астрология" width="200" id="header-img">
+        <div id="language-select">
+            <label>
+                <span data-i18n="language">Язык:</span>
+                <select id="lang">
+                    <option value="ru">Русский</option>
+                    <option value="en">English</option>
+                    <option value="no">Norsk</option>
+                </select>
+            </label>
+        </div>
+    </header>
+
+    <div id="main-menu">
+        <button data-i18n="forecastToday" onclick="PrognozToday()">Прогноз на сегодня</button>
+        <button data-i18n="forecastAnotherDay" onclick="showDateForm()">Прогноз на другой день</button>
+        <button data-i18n="personality" onclick="showPersonalityForm()">Характеристика человека</button>
+    </div>
+
+    <div id="personality-form" class="hidden">
+        <p data-i18n="enterBirth">Введите дату и время рождения:</p>
+        <input type="datetime-local" id="birth-datetime">
+        <br>
+        <button data-i18n="calculate" onclick="renderPersonality()">Рассчитать</button>
+    </div>
+
+    <div id="date-form" class="hidden">
+        <p data-i18n="enterDate">Введите дату и время:</p>
+        <input type="datetime-local" id="date-datetime">
+        <br>
+        <button data-i18n="calculate" onclick="PrognozDate()">Рассчитать</button>
+    </div>
+
+    <div id="back-btn" class="hidden">
+        <button data-i18n="back" onclick="goBack()">Назад</button>
+    </div>
+
+    <div id="loader" style="display:none; text-align: center; margin: 20px;">
+        <div class="spinner"></div>
+        <p data-i18n="loading">Пожалуйста, подождите, идет загрузка...</p>
+    </div>
+
+    <div id="prognoz"></div>
+
+    <div id="save-pdf-btn" class="hidden" style="text-align: center;">
+        <button data-i18n="saveToPdf" onclick="saveAsPDF()">Сохранить в PDF</button>
+    </div>
+
+</body>
+</html>
